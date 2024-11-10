@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محضر ضبط المخالفة</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-left">
+                    <p>تخزين</p>
+                    <p>إلتزام</p>
+                </div>
+                <div class="header-center">
+                    <h2>--------------------وزارة النقل والاتصالات وتقنية المعلومات-------------------</h2>
+                    <h4>---------------------------------------المديرية العامة للطرق والنقل البري---------------------------------------------</h4>
+                    <h4>--------------------------------------------------المديرية ظفار-------------------------------------------------------</h4>
+                    <h3>( قسم النقل البري )</h3>
+                </div>
+                <div class="header-right">
+                    <label for="time">اختيار الوقت:</label>
+                    <select name="time" id="time">
+                        <option value="morning">صباح</option>
+                        <option value="evening">مساء</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <h3 class="title">محضر ضبط المخالفة المرورية</h3>
+
+        <table class="form-table">
+            <tr>
+                <td><label for="offender_name">اسم المخالف:</label></td>
+                <td><input type="text" name="offender_name" id="offender_name"></td>
+                <td><label for="violation_date">تاريخ المخالفة:</label></td>
+                <td><input type="date" name="violation_date" id="violation_date"></td>
+            </tr>
+            <tr>
+                <td><label for="nationality">الجنسية:</label></td>
+                <td><input type="text" name="nationality" id="nationality"></td>
+                <td><label for="violation_location">موقع المخالفة:</label></td>
+                <td><input type="text" name="violation_location" id="violation_location"></td>
+            </tr>
+            <tr>
+                <td><label for="company_name">اسم الشركة:</label></td>
+                <td><input type="text" name="company_name" id="company_name"></td>
+                <td><label for="civil_id">الرقم المدني:</label></td>
+                <td><input type="text" name="civil_id" id="civil_id"></td>
+            </tr>
+            <tr>
+                <td><label for="commercial_record">رقم السجل التجاري:</label></td>
+                <td><input type="text" name="commercial_record" id="commercial_record"></td>
+                <td><label for="plate_number">رقم اللوحة:</label></td>
+                <td><input type="text" name="plate_number" id="plate_number"></td>
+                <td><label for="code">الرمز:</label></td>
+                <td><input type="text" name="code" id="code"></td>
+            </tr>
+            <tr>
+                <td><label for="activity_type">نوع المخالفة:</label></td>
+                <td><input type="text" name="activity_type" id="activity_type"></td>
+                <td><label for="phone">رقم الهاتف:</label></td>
+                <td><input type="tel" name="phone" id="phone"></td>
+            </tr>
+        </table>
+
+        <tr>
+            <td><label for="note">ملاحظة:</label></td>
+            <td><textarea name="note" id="note"></textarea></td>
+        </tr>
+
+        <h3 class="subtitle">الإفادة:</h3>
+        <textarea name="offender_statement" class="large-textarea"></textarea>
+
+        <h3 class="subtitle">افادة المخالف:</h3>
+        <textarea name="offender_statement" class="large-textarea"></textarea>
+            
+        <h3 class="subtitle">توقيع المخالف:</h3>
+
+        <tr>
+            <td>
+                <div class="signature-container">
+                    <canvas id="signature-pad" width="300" height="200"></canvas>
+                    <br>
+                    <button type="button" onclick="clearSignature()">مسح التوقيع</button>
+                    <button type="button" onclick="saveSignature()">حفظ التوقيع</button>
+                </div>
+            </td>
+        </tr>
+
+        <h3 class="subtitle">أسماء الركاب:</h3>
+        <table class="passenger-table">
+            <tr class="passenger-row">
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger1_name">1. الاسم:</label>
+                        <input type="text" name="passenger1_name" id="passenger1_name">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger1_nationality">1. الجنسية:</label>
+                        <input type="text" name="passenger1_nationality" id="passenger1_nationality">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger1_civil_id">1. الرقم المدني:</label>
+                        <input type="text" name="passenger1_civil_id" id="passenger1_civil_id">
+                    </div>
+                </td>
+            </tr>
+            <tr class="passenger-row">
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger2_name">2. الاسم:</label>
+                        <input type="text" name="passenger2_name" id="passenger2_name">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger2_nationality">2. الجنسية:</label>
+                        <input type="text" name="passenger2_nationality" id="passenger2_nationality">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger2_civil_id">2. الرقم المدني:</label>
+                        <input type="text" name="passenger2_civil_id" id="passenger2_civil_id">
+                    </div>
+                </td>
+            </tr>
+            <tr class="passenger-row">
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger3_name">3. الاسم:</label>
+                        <input type="text" name="passenger3_name" id="passenger3_name">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger3_nationality">3. الجنسية:</label>
+                        <input type="text" name="passenger3_nationality" id="passenger3_nationality">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger3_civil_id">3. الرقم المدني:</label>
+                        <input type="text" name="passenger3_civil_id" id="passenger3_civil_id">
+                    </div>
+                </td>
+            </tr>
+            <tr class="passenger-row">
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger4_name">4. الاسم:</label>
+                        <input type="text" name="passenger4_name" id="passenger4_name">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger4_nationality">4. الجنسية:</label>
+                        <input type="text" name="passenger4_nationality" id="passenger4_nationality">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger4_civil_id">4. الرقم المدني:</label>
+                        <input type="text" name="passenger4_civil_id" id="passenger4_civil_id">
+                    </div>
+                </td>
+            </tr>
+            <tr class="passenger-row">
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger5_name">5. الاسم:</label>
+                        <input type="text" name="passenger5_name" id="passenger5_name">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger5_nationality">5. الجنسية:</label>
+                        <input type="text" name="passenger5_nationality" id="passenger5_nationality">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger5_civil_id">5. الرقم المدني:</label>
+                        <input type="text" name="passenger5_civil_id" id="passenger5_civil_id">
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <h3 class="subtitle">اسم مأمور الضبط القضائي</h3>
+
+        <table class="passenger-table">
+            <tr class="passenger-row">
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger1_name">1. الاسم:</label>
+                        <input type="text" name="passenger1_name" id="passenger1_name">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger1_signature">1. التوقيع:</label>
+                        <input type="text" name="passenger1_signature" id="passenger1_signature">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger1_civil_id">1. الرقم المدني:</label>
+                        <input type="text" name="passenger1_civil_id" id="passenger1_civil_id">
+                    </div>
+                </td>
+            </tr>
+            <tr class="passenger-row">
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger2_name">2. الاسم:</label>
+                        <input type="text" name="passenger2_name" id="passenger2_name">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger2_signature">2. التوقيع:</label>
+                        <input type="text" name="passenger2_signature" id="passenger2_signature">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger2_civil_id">2. الرقم المدني:</label>
+                        <input type="text" name="passenger2_civil_id" id="passenger2_civil_id">
+                    </div>
+                </td>
+            </tr>
+            <tr class="passenger-row">
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger3_name">3. الاسم:</label>
+                        <input type="text" name="passenger3_name" id="passenger3_name">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger3_signature">3. التوقيع:</label>
+                        <input type="text" name="passenger3_signature" id="passenger3_signature">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger3_civil_id">3. الرقم المدني:</label>
+                        <input type="text" name="passenger3_civil_id" id="passenger3_civil_id">
+                    </div>
+                </td>
+            </tr>
+            <tr class="passenger-row">
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger4_name">4. الاسم:</label>
+                        <input type="text" name="passenger4_name" id="passenger4_name">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger4_signature">4. التوقيع:</label>
+                        <input type="text" name="passenger4_signature" id="passenger4_signature">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger4_civil_id">4. الرقم المدني:</label>
+                        <input type="text" name="passenger4_civil_id" id="passenger4_civil_id">
+                    </div>
+                </td>
+            </tr>
+            <tr class="passenger-row">
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger5_name">5. الاسم:</label>
+                        <input type="text" name="passenger5_name" id="passenger5_name">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger5_signature">5. التوقيع:</label>
+                        <input type="text" name="passenger5_signature" id="passenger5_signature">
+                    </div>
+                </td>
+                <td>
+                    <div class="passenger-info">
+                        <label for="passenger5_civil_id">5. الرقم المدني:</label>
+                        <input type="text" name="passenger5_civil_id" id="passenger5_civil_id">
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        
+        <!-- Notes Section -->
+        <table>
+            <td>
+                
+            </td>
+            <div class="notes-container">
+                <h3 class="right-align">ملاحظات رئيس القسم:-</h3>
+            </div>
+            <h3 class="left-align">اعتماد رئيس قسم النقل البري</h3>
+        </table>
+
+
+        <div class="buttons">
+            <button onclick="printForm()">طباعة</button>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
